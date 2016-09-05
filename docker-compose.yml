@@ -1,0 +1,31 @@
+version: '2'
+services:
+  web:
+    build: httpd
+    image: rundeck-httpd
+    env_file: "variables.env"
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - rundeck
+    links:
+      - rundeck
+  rundeck:
+    build: rundeck
+    image: rundeck
+    env_file: "variables.env"
+    volumes:
+      - ./data/var/log/rundeck:/var/log/rundeck
+      - ./data/var/rundeck:/var/rundeck
+      - ./data/var/lib/rundeck/var/storage:/var/lib/rundeck/var/storage
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  mysql:
+    image: mysql
+    container_name: mysql
+    env_file: "variables.env"
+    volumes:
+      - ./data/var/lib/mysql:/var/lib/mysql
