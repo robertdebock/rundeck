@@ -28,5 +28,5 @@ I've included a few scripts, mostly as a sample:
 - execute-jobs.sh - A script using the API to start jobs.
 
 Interesting settings:
-- The "web" service must be listening to a port, you may need to change "ports"
+- The "web" service is the entrace to this application, and must be listening to a port, you may need to change "ports"
 in docker-compose.yml
