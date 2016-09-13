@@ -26,7 +26,8 @@ RUN yum -y install java-1.8.0-openjdk \
                    rundeck && \
     yum -y clean all
 
-CMD sed -i '/dataSource.url/d' /etc/rundeck/rundeck-config.properties && \
+CMD  while ! exec 6<>/dev/tcp/${MYSQL_HOST}/3306 ; do echo "$(date) - still trying to connect to MySQL at ${MYSQL_HOST}" ; sleep 1 ; done && \
+    sed -i '/dataSource.url/d' /etc/rundeck/rundeck-config.properties && \
     echo "dataSource.url = jdbc:mysql://${MYSQL_HOST}/${MYSQL_DATABASE}?autoReconnect=true" >> /etc/rundeck/rundeck-config.properties && \
     echo "dataSource.username=${MYSQL_USER}" >> /etc/rundeck/rundeck-config.properties && \
     echo "dataSource.password=${MYSQL_PASSWORD}" >> /etc/rundeck/rundeck-config.properties && \
