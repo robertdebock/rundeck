@@ -4,7 +4,7 @@ An environment to run RUNDECK.
 There are 3 containers configured:
 - httpd - Apache HTTPD, as a web frontend.
 - rundeck - The application.
-- mysql - The storage for jobs and job-history.
+- mysql - The storage for jobs and job-history. This container will wait until MySQL is available.
 
 To use this "environment" issue:
 
