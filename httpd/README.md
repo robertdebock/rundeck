@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/robertdebock/rundeck-httpd.svg)](http://microbadger.com/images/robertdebock/rundeck-httpd "Get your own image badge on microbadger.com")
+
 # About this container.
 
 A docker container to serve as a proxy in front of RUNDECK. This container

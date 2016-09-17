@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/robertdebock/rundeck.svg)](http://microbadger.com/images/robertdebock/rundeck "Get your own image badge on microbadger.com")
+
 # About this container.
 
 [RUNDECK](http://rundeck.org/) is a (web) application to run commands on other hosts. It can be used to manage other (Linux) hosts.
