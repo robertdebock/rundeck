@@ -17,7 +17,9 @@ To use this "environment" issue:
 This will create a "data" directory to store all persistent data.
 
 When everything has been started (should take some 30 seconds) you can visit
-the URL that you've specified in variables.env.
+the URL that you've specified in variables.env. You can use these credentials:
+- Username: admin
+- Password: admin
 
 I've included a few scripts, mostly as a sample:
 - add-to-resources.sh - A script to add hosts to rundeck's resources.xml.

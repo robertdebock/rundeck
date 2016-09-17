@@ -31,14 +31,6 @@ CMD sed -i '/dataSource.url/d' /etc/rundeck/rundeck-config.properties && \
     echo "dataSource.username=${MYSQL_USER}" >> /etc/rundeck/rundeck-config.properties && \
     echo "dataSource.password=${MYSQL_PASSWORD}" >> /etc/rundeck/rundeck-config.properties && \
     echo "grails.serverURL=${URL}" >> /etc/rundeck/rundeck-config.properties && \
-#    sed -i '/framework.server.port/d' /etc/rundeck/framework.properties && \
-#    echo "framework.server.port = ${PORT}" >> /etc/rundeck/framework.properties && \
-#    sed -i '/framework.server.hostname/d' /etc/rundeck/framework.properties && \
-#    echo "framework.server.hostname = ${HOSTNAME}" >> /etc/rundeck/framework.properties && \
-#    sed -i '/framework.server.name/d' /etc/rundeck/framework.properties && \
-#    echo "framework.server.name = ${HOSTNAME}" >> /etc/rundeck/framework.properties && \
-#    sed -i '/framework.server.url/d' /etc/rundeck/framework.properties && \
-#    echo "framework.server.url = ${URL}" >> /etc/rundeck/framework.properties && \
     sed -i '/framework.ssh.timeout/d' /etc/rundeck/framework.properties && \
     echo "framework.ssh.timeout = 10000" >> /etc/rundeck/framework.properties && \
     source /etc/rundeck/profile && \
