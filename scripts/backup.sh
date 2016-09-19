@@ -8,7 +8,7 @@ backupfiles() {
  for directory in /var/rundeck /var/lib/rundeck/var/storage /var/lib/rundeck/logs ; do 
    filename=$(echo ${directory} | sed 's%/%%g').tar.gz
    echo "Backing up ${directory}..."
-   docker exec rundeck /bin/bash -c "cd ${directory} ; tar -czf - *" > data/${filename}
+   docker exec rundeck_rundeck_1 /bin/bash -c "cd ${directory} ; tar -czf - *" > data/${filename}
  done
 }
 
