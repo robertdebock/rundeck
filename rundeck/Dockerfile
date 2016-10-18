@@ -34,6 +34,6 @@ CMD sed -i '/dataSource.url/d' /etc/rundeck/rundeck-config.properties && \
     sed -i '/framework.ssh.timeout/d' /etc/rundeck/framework.properties && \
     echo "framework.ssh.timeout = 10000" >> /etc/rundeck/framework.properties && \
     source /etc/rundeck/profile && \
-    ${JAVA_HOME:-/usr}/bin/java ${RDECK_JVM} -Drundeck.jetty.connector.forwarded=true -cp ${BOOTSTRAP_CP} com.dtolabs.rundeck.RunServer /var/lib/rundeck ${RDECK_HTTP_PORT}
+    ${JAVA_HOME:-/usr}/bin/java ${RDECK_JVM} -Xmx4096m -Xms1024m -Drundeck.jetty.connector.forwarded=true -cp ${BOOTSTRAP_CP} com.dtolabs.rundeck.RunServer /var/lib/rundeck ${RDECK_HTTP_PORT}
 
 EXPOSE 4440
