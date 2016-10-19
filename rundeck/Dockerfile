@@ -32,7 +32,7 @@ CMD sed -i '/dataSource.url/d' /etc/rundeck/rundeck-config.properties && \
     echo "dataSource.password=${MYSQL_PASSWORD}" >> /etc/rundeck/rundeck-config.properties && \
     echo "grails.serverURL=${URL}" >> /etc/rundeck/rundeck-config.properties && \
     sed -i '/framework.ssh.timeout/d' /etc/rundeck/framework.properties && \
-    echo "framework.ssh.timeout = 10000" >> /etc/rundeck/framework.properties && \
+    echo "framework.ssh.timeout = 3000" >> /etc/rundeck/framework.properties && \
     source /etc/rundeck/profile && \
     ${JAVA_HOME:-/usr}/bin/java ${RDECK_JVM} -Xmx4096m -Xms1024m -Drundeck.jetty.connector.forwarded=true -cp ${BOOTSTRAP_CP} com.dtolabs.rundeck.RunServer /var/lib/rundeck ${RDECK_HTTP_PORT}
 
