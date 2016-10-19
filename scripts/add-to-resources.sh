@@ -121,7 +121,7 @@ main() {
     # If the host is already in the file, don't add it.
     grep "${hostname}" "${resourcefile}" > /dev/null 2>&1
     if [ $? != 0 ] ; then
-      echo "  <node name=\"${hostname}\" tags=\"${tags}\" hostname=\"${hostname}.europe.intranet\" username=\"${username}\"/>" >> "${resourcefile}"
+      echo "  <node name=\"${hostname}\" tags=\"${tags}\" hostname=\"${hostname}\" username=\"${username}\"/>" >> "${resourcefile}"
     fi
   done
 
