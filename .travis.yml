@@ -27,8 +27,9 @@ script:
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker images
+  - docker tag rundeck-httpd robertdebock/rundeck-httpd:$TAG
   - docker push robertdebock/rundeck-httpd:$TAG
+  - docker tag rundeck robertdebock/rundeck-httpd:$TAG
   - docker push robertdebock/rundeck:$TAG
 
 notifications:
