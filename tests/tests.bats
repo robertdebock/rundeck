@@ -9,7 +9,7 @@
 }
 
 @test "Logging in to Rundeck." {
-  run curl http://localhost/rundeck/user/login --cookie-jar cookies.txt -F 'j_username=admin' -F 'j_password=admin' 
+  run curl --insecure https://localhost/rundeck/user/login --cookie-jar cookies.txt -F 'j_username=admin' -F 'j_password=admin' 
   [ "${status}" -eq 0 ]
 }
 
@@ -19,13 +19,13 @@
 }
 
 @test "Checking System info." {
-  run curl https://localhost/menu/systemInfo --cookie cookies.txt
+  run curl --insecure https://localhost/menu/systemInfo --cookie cookies.txt
   [ "${status}" -eq 0 ]
   [ $(expr "${output}" : "ACTIVE") -eq 0 ]
 }
 
 @test "Logging out of Rundeck." {
-  run curl --cookie-jar cookies.txt https://localhost/user/logout
+  run curl --insecure --cookie-jar cookies.txt https://localhost/user/logout
   [ "${status}" -eq 0 ]
 }
 
