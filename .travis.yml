@@ -5,7 +5,6 @@ services:
 
 env:
   global:
-    - NAME=rundeck
     - SSL_COUNTRY=NL
     - SSL_STATE=Utrecht
     - SSL_LOCATION=Breukelen
@@ -28,7 +27,8 @@ script:
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker push robertdebock/$NAME:$TAG
+  - docker images
+  - docker push robertdebock/rundeck:$TAG
 
 notifications:
   email: false
