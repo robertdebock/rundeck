@@ -1,0 +1,38 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - NAME=rundeck
+    - SSL_COUNTRY=NL
+    - SSL_STATE=Utrecht
+    - SSL_LOCATION=Breukelen
+    - SSL_ORGANIZATION=http://meinit.nl/
+    - SSL_ORGANIZATIONAL_UNIT=robert@meinit.nl
+    - SSL_COMMONNAME=rundeck.meinit.nl
+    - MYSQL_ROOT_PASSWORD=rundeck
+    - MYSQL_DATABASE=rundeck
+    - MYSQL_USER=rundeck
+    - MYSQL_PASSWORD=rundeck
+
+install:
+  - docker-compose build
+
+
+script:
+  - docker-compose up -d
+  - echo "Waiting for Rundeck to become availale."
+  - until $(curl --output /dev/null --silent --head --fail http://localhost:4440/) ; do echo -n "." ; sleep 1 ; done
+  - bats tests/
+
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker build . -t $NAME:latest
+  - docker build . -t $NAME:$TAG
+  - docker push $NAME
+
+notifications:
+  email: false
