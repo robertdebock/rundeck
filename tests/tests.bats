@@ -33,8 +33,3 @@
  run rm cookies.txt
  [ "${status}" -eq 0 ]
 }
-
-@test "False logging in to Rundeck." {
-  run curl http://localhost/rundeck/user/login --cookie-jar cookies.txt -F 'j_username=admin' -F 'j_password=notcorrect' 
-  [ $(echo ${output} | grep "Unrecognized username or password" > /dev/null 2>&1 ; echo $?) -eq 0 ]
-}
