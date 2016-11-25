@@ -24,7 +24,7 @@ install:
 script:
   - docker-compose up -d
   - echo "Waiting for Rundeck to become availale."
-  - until $(curl --output /dev/null --silent --head --fail http://localhost:4440/) ; do echo -n "." ; sleep 1 ; done
+  - until $(curl --insecure --output /dev/null --silent --head --fail https://localhost/) ; do echo -n "." ; sleep 1 ; done
   - bats tests/
 
 after_success:
