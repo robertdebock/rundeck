@@ -20,12 +20,12 @@ env:
 install:
   - docker-compose build
 
-
 script:
   - docker-compose up -d
-  - echo "Waiting for Rundeck to become availale."
-  - until $(curl --insecure --output /dev/null --silent --head --fail https://localhost/) ; do echo -n "." ; sleep 1 ; done
-  - bats tests/
+  - echo "Waiting for Rundeck to become availale." && \
+    until $(curl --insecure --output /dev/null --silent --head --fail https://localhost/) ; do echo -n "." ; sleep 1 ; done
+  - echo "Runnning tests." && \
+    bats tests/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
