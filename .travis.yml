@@ -28,8 +28,8 @@ after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker images
-  - docker push rundeck-httpd:$TAG
-  - docker push rundeck:$TAG
+  - docker push robertdebock/rundeck-httpd:$TAG
+  - docker push robertdebock/rundeck:$TAG
 
 notifications:
   email: false
