@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Robert de Bock
 
-LABEL Description="Base RUNDECK image" Version="2.6.11"
+LABEL Description="Base RUNDECK image" Version="2.7.3"
 
 # Settings you will need to change for your setup.
 ENV HOSTNAME localhost
