@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: httpd
-    image: rundeck-httpd
+    image: robertdebock/rundeck-httpd
     env_file: "variables.env"
     ports:
       - 80:80
@@ -13,7 +13,7 @@ services:
       - rundeck
   rundeck:
     build: rundeck
-    image: rundeck
+    image: robertdebock/rundeck
     env_file: "variables.env"
     volumes:
       - ./data/var/log/rundeck:/var/log/rundeck
