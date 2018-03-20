@@ -29,6 +29,8 @@ I've included a few scripts, mostly as a sample:
 - list-jobs.sh - A script using the API to list jobs in a project.
 - execute-jobs.sh - A script using the API to start jobs.
 
+Some scripts contain a key, which you may need to update.
+
 Interesting settings:
 - The "web" service is the entrace to this application, and must be listening to a port, you may need to change "ports"
 in docker-compose.yml
