@@ -7,10 +7,6 @@ services:
     ports:
       - 80:80
       - 443:443
-    depends_on:
-      - rundeck
-    links:
-      - rundeck
   rundeck:
     build: rundeck
     image: robertdebock/rundeck
@@ -19,10 +15,6 @@ services:
       - ./data/var/log/rundeck:/var/log/rundeck
       - ./data/var/rundeck:/var/rundeck
       - ./data/var/lib/rundeck/var/storage:/var/lib/rundeck/var/storage
-    depends_on:
-      - mysql
-    links:
-      - mysql
   mysql:
     image: mysql
     container_name: mysql
